@@ -1,6 +1,17 @@
-﻿namespace InventoryManagementAPI.Data
+﻿using Microsoft.EntityFrameworkCore;
+using InventoryManagementAPI.Models;
+
+namespace InventoryManagementAPI.Data;
+
+public class ApplicationDbContext : DbContext
 {
-    public class ApplicationDbContext
+    public ApplicationDbContext(
+        DbContextOptions<ApplicationDbContext> options)
+        : base(options)
     {
     }
+
+    public DbSet<Product> Products { get; set; }
+
+    public DbSet<Category> Categories { get; set; }
 }
